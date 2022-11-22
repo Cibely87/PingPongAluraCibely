@@ -5,15 +5,14 @@ let raio = diametro / 2;
 
 let velocidadeXBolinha = 6;
 let velocidadeYBolinha = 6;
-
-let xRaquete = 5;
-let yRaquete = 150;
 let comprimentoRaquete = 10;
 let alturaRaquete = 90;
 
+let xRaquete = 5;
+let yRaquete = 150;
+
 let xRaqueteOponente = 585;
 let yRaqueteOponente = 150;
-let velocidadeXOponenente;
 let velocidadeYOponente;
 
 let colidir = false;
@@ -21,8 +20,19 @@ let colidir = false;
 let meusPontos = 0;
 let pontosDoOponente = 0;
 
+let ponto;
+let raquetada;
+let trilha;
+
+function preload() {
+  trilha = loadSound("trilha.mp3");
+  raquetada = loadSound("raquetada.mp3");
+  ponto = loadSound("ponto.mp3");
+}
+
 function setup() {
   createCanvas(600, 400);
+  trilha.loop();
 }
 
 function draw() {
@@ -92,9 +102,11 @@ function colisaoRaqueteOponente() {
 }
 
 function incluiPlacar() {
+  textSize(16);
+  textAlign(CENTER)
   fill(255);
-  text(meusPontos, 278, 26);
-  text(pontosDoOponente, 321, 26)
+  text(meusPontos, 150, 26);
+  text(pontosDoOponente, 450, 26)
 }
 
 function marcaPonto() {
